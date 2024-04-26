@@ -1,16 +1,55 @@
 "use client";
 import React, { useTransition, useState } from "react";
 import Image from "next/image";
+import TabButton from "./TabButton";
+import { Content } from "next/font/google";
+
+const TAB_DATA = [
+  {
+    title: "Skills",
+    id: "skills",
+    content: (
+      <ul>
+        <li>Node.js</li>
+        <li>Express</li>
+        <li>React</li>
+        <li>Javascript</li>
+        <li>Tailwind</li>
+      </ul>
+    )
+  },
+  {
+    title: "Education",
+    id: "education",
+    content: (
+      <ul>
+        <li>Bachelor of Information Technology</li>
+        <li>University of Moratuwa</li>
+      </ul>
+    )
+  },
+  {
+    title: "Certifications",
+    id: "Certifications",
+    content: (
+      <ul>
+        <li>Fullstack Developer - IBM</li>
+        <li>Javascript for Beginners - Coursera</li>
+      </ul>
+    )
+  
+  }
+]
 
 const AboutSection = () => {
-    const [tab, setTab] = useState("skills");
-    const [startTransition, isPending] = useTransition();
+  const [tab, setTab] = useState("skills");
+  const [isPending, startTransition] = useTransition();
 
-    const handleTabChange = (id) => {
-        startTransition(() => {
-            setTab(id);
-        });
-    }
+  const handleTabChange = (id) => {
+    startTransition(() => {
+      setTab(id);
+    });
+  };
 
   return (
     <section className="text-white">
@@ -27,12 +66,29 @@ const AboutSection = () => {
             labore.
           </p>
           <div className="flex flex-row mt-8">
-            <span className="mr-3 font-semibold hover:text-white text-[#ADB7BE] border-b border-purple-500">
-              Skills
-            </span>
-            <span>Education</span>
-            <span>Experience</span>
+            <TabButton
+              active={tab === "skills"}
+              selectTab={() => handleTabChange("skills")}
+            >
+              {" "}
+              Skills{" "}
+            </TabButton>
+            <TabButton
+              active={tab === "education"}
+              selectTab={() => handleTabChange("education")}
+            >
+              {" "}
+              Education{" "}
+            </TabButton>
+            <TabButton
+              active={tab === "Certifications"}
+              selectTab={() => handleTabChange("Certifications")}
+            >
+              {" "}
+              Certifications{" "}
+            </TabButton>
           </div>
+          <div className="mt-8">{TAB_DATA.find((t) => t.id === tab).content}</div>
         </div>
       </div>
     </section>
