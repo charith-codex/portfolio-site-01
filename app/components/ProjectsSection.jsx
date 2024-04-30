@@ -27,7 +27,7 @@ const projectsData = [
     title: "E-commerce Application",
     description: "Project 3 description",
     image: "/images/projects/3.png",
-    tag: ["All", "Web"],
+    tag: ["All", "Mobile"],
     gitUrl: "/",
     previewUrl: "/",
   },
@@ -67,6 +67,10 @@ const ProjectsSection = () => {
     setTag(newTag);
   };
 
+  const filteredProjects = projectsData.filter((project) =>
+    project.tag.includes(tag)
+  );
+
   return (
     <>
       <h2 className="text-center text-4xl font-bold text-white mt-4 mb-8 md:mb-12">
@@ -90,7 +94,7 @@ const ProjectsSection = () => {
         />
       </div>
       <div className="grid md:grid-cols-3 gap-8 md:gap-12">
-        {projectsData.map((project) => (
+        {filteredProjects.map((project) => (
           <ProjectCard
             key={project.id}
             title={project.title}
