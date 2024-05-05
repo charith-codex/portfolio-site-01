@@ -1,11 +1,12 @@
-"use client"
-import React from "react";
+"use client";
+import React, { useState } from "react";
 import GithubIcon from "../../public/github-icon.svg";
 import LinkedinIcon from "../../public/linkedin-icon.svg";
 import Link from "next/link";
 import Image from "next/image";
 
 const EmailSection = () => {
+  const [emailSubmitted, setEmailSubmitted] = useState(false);
   const handleSubmit = async (e) => {
     e.preventDefault();
     const data = {
@@ -25,12 +26,12 @@ const EmailSection = () => {
     };
     const response = await fetch(endpoint, options);
     const resData = await response.json();
-    console.log(resData)
 
     if (response.status === 200) {
-      console.log("message sent.")
+      console.log("message sent.");
+      setEmailSubmitted(true);
     }
-  }
+  };
 
   return (
     <section className="grid md:grid-cols-2 my-12 md:my-12 py-24 gap-4 relative">
@@ -61,7 +62,7 @@ const EmailSection = () => {
               Your email
             </label>
             <input
-            name="email"
+              name="email"
               type="email"
               id="email"
               required
@@ -77,7 +78,7 @@ const EmailSection = () => {
               Subject
             </label>
             <input
-            name="subject"
+              name="subject"
               type="text"
               id="subject"
               required
@@ -105,11 +106,15 @@ const EmailSection = () => {
           >
             Send Message
           </button>
+          {emailSubmitted && (
+            <p className="text-green-500 text-sm mt-2">
+              Message sent successfully!
+            </p>
+          )}
         </form>
       </div>
     </section>
   );
 };
-
 
 export default EmailSection;
