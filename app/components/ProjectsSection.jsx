@@ -80,7 +80,7 @@ const ProjectsSection = () => {
   };
 
   return (
-    <section ref={ref}>
+    <section>
       <h2 className="text-center text-4xl font-bold text-white mt-4 mb-8 md:mb-12">
         My Projects
       </h2>
@@ -101,12 +101,14 @@ const ProjectsSection = () => {
           isSelected={tag === "Mobile"}
         />
       </div>
-      <ul className="grid md:grid-cols-3 gap-8 md:gap-12">
-        {filteredProjects.map((project) => (
+      <ul ref={ref} className="grid md:grid-cols-3 gap-8 md:gap-12">
+        {filteredProjects.map((project, index) => (
           <motion.li
+            key={index}
             variants={cardVariants}
             initial="initial"
             animate={isInView ? "animate" : "initial"}
+            transition={{ duration: 0.3, delay: index * 0.4}}
           >
             <ProjectCard
               key={project.id}
