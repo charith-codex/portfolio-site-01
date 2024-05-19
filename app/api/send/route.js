@@ -5,7 +5,7 @@ const resend = new Resend(process.env.RESEND_API_KEY);
 const fromEmail = process.env.FROM_EMAIL;
 
 export async function POST(req, res) {
-  const { email, subject, message } = await req.json();  //fix issue
+  const { email, subject, message } = await req.json(); //fix issue
   //const { body } = await req.json();
   //const { email, subject, message } = body;
   try {
@@ -15,9 +15,12 @@ export async function POST(req, res) {
       subject: subject,
       react: (
         <>
-          <h1>{subject}</h1>
-          <p>Thank you for contacting us!</p>
-          <p>New message submitted:</p>
+          <h1>Thank you for contacting us!</h1>
+          <p>
+            <em>Your message was submitted</em>
+          </p>
+          <hr />
+          <h2>{subject}</h2>
           <p>{message}</p>
         </>
       ),

@@ -16,7 +16,7 @@ const TAB_DATA = [
         <li>Javascript</li>
         <li>Tailwind</li>
       </ul>
-    )
+    ),
   },
   {
     title: "Education",
@@ -26,7 +26,7 @@ const TAB_DATA = [
         <li>Bachelor of Information Technology</li>
         <li>University of Moratuwa</li>
       </ul>
-    )
+    ),
   },
   {
     title: "Certifications",
@@ -36,10 +36,9 @@ const TAB_DATA = [
         <li>Fullstack Developer - IBM</li>
         <li>Javascript for Beginners - Coursera</li>
       </ul>
-    )
-  
-  }
-]
+    ),
+  },
+];
 
 const AboutSection = () => {
   const [tab, setTab] = useState("skills");
@@ -52,9 +51,14 @@ const AboutSection = () => {
   };
 
   return (
-    <section className="text-white">
+    <section className="text-white" id="about">
       <div className="md:grid md:grid-cols-2 gap-8 items-center py-8 px-4 xl:gap-16 sm:py-16 xl:px-16">
-        <Image src="/images/about-image.png" width={500} height={500} alt="about-image"/>
+        <Image
+          src="/images/about-image.png"
+          width={500}
+          height={500}
+          alt="about-image"
+        />
         <div className="mt-4 md:mt-0 text-left flex flex-col h-full">
           <h2 className="text-4xl font-bold text-white mb-4">About Me</h2>
           <p className="text-base lg:text-lg">
@@ -88,7 +92,9 @@ const AboutSection = () => {
               Certifications{" "}
             </TabButton>
           </div>
-          <div className="mt-8">{TAB_DATA.find((t) => t.id === tab).content}</div>
+          <div className="mt-8">
+            {TAB_DATA.find((t) => t.id === tab).content}
+          </div>
         </div>
       </div>
     </section>
