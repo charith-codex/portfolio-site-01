@@ -80,7 +80,7 @@ const ProjectsSection = () => {
   };
 
   return (
-    <section id="projects">
+    <section id="projects" className="py-16">
       <h2 className="text-center text-4xl font-bold text-white mt-8 mb-4 md:mb-8">
         My Projects
       </h2>
