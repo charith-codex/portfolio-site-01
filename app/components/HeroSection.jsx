@@ -60,7 +60,7 @@ const HeroSection = () => {
         >
           <div className="rounded-xl bg-[#181818] w-[250px] h-[250px] overflow-hidden relative group">
             <Image
-              src="/images/hero.jpg"
+              src="/images/hero.png"
               alt="Hero Image"
               className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
               layout="fill"
